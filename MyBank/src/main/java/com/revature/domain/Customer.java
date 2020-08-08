@@ -1,85 +1,46 @@
 package com.revature.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+/**
+ * To hold customer info and link to Class.Account
+ *
+ */
 
-public class Customer extends Account {
+public class Customer {
 
-    private String firstname;
-    private String lastname;
-    private String username;
-    private String password;
-
-
+    private String firstName;
+    private String lastName;
+    private Account account;
 
     public Customer() {
     }
 
-    public Customer(String firstname, String lastname, String username, String password) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.username = username;
-        this.password = password;
+    public Customer(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Customer)) return false;
-        Customer customer = (Customer) o;
-        return Objects.equals(getFirstname(), customer.getFirstname()) &&
-                Objects.equals(getLastname(), customer.getLastname()) &&
-                Objects.equals(getUsername(), customer.getUsername()) &&
-                Objects.equals(getPassword(), customer.getPassword());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getFirstname(), getLastname(), getUsername(), getPassword());
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", account=" + account +
                 '}';
     }
 }

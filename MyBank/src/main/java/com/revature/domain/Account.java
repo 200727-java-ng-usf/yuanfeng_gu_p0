@@ -1,62 +1,22 @@
 package com.revature.domain;
 
-import java.util.Objects;
+/**
+ *  To write the first class in the Project_0
+ *  This class is to hold the account balance for the customer and
+ *  do deposit,withdrew,getBalance for the customer (I will add Checking and Saving later)
+ *
+ */
 
-public class Account extends SavingAccount{
-
-
-    private int accountNumber;
-    private double accountValue;
-
+public abstract class Account {
 
     public Account() {
-        super();
     }
 
+    public abstract double getBalance();
 
-    public Account(int accountNumber, double accountValue) {
-        super();
-        this.accountNumber = accountNumber;
-        this.accountValue = accountValue;
-    }
+    public abstract boolean deposit(double amount);
 
-
-    public int getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
-    }
+    public abstract boolean withdraw(double amount) throws OverdraftException;
 
 
-    public double getAccountValue() {
-        return accountValue;
-    }
-
-    public void setAccountValue(double accountValue) {
-        this.accountValue = accountValue;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Account)) return false;
-        Account account = (Account) o;
-        return getAccountNumber() == account.getAccountNumber() &&
-                Double.compare(account.getAccountValue(), getAccountValue()) == 0;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getAccountNumber(), getAccountValue());
-    }
-
-    @Override
-    public String toString() {
-        return "Account{" +
-                "accountNumber=" + accountNumber +
-                ", accountValue=" + accountValue +
-                '}';
-    }
 }

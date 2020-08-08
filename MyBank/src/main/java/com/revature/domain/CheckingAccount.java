@@ -1,36 +1,54 @@
 package com.revature.domain;
 
-public class CheckingAccount{
+/**
+ *  checking Account
+ *
+ *
+ */
 
-    private double checkingBalance;
+public class CheckingAccount extends Account {
+    private double balance;
+    protected double checkingAccountBalance;
+    protected double savingAccountBalance;
+
+    public CheckingAccount(double checkingAccountBalance,double savingAccountBalance) {
+        this.checkingAccountBalance = checkingAccountBalance;
+        this.savingAccountBalance = savingAccountBalance;
+    }
 
     public CheckingAccount() {
+
     }
 
-    public CheckingAccount(double checkingBalance) {
-        this.checkingBalance = checkingBalance;
+    public void setCheckingAccountBalance(double checkingAccountBalance) {
+        this.checkingAccountBalance = checkingAccountBalance;
     }
 
+    public double getCheckingAccountBalance() {
+        return checkingAccountBalance;
+    }
 
+    @Override
     public double getBalance() {
-        return checkingBalance;
+        this.balance = checkingAccountBalance + savingAccountBalance;
+        return balance;
     }
 
 
+    @Override
     public boolean deposit(double amount) {
-        checkingBalance += amount;
+        checkingAccountBalance += amount;
         return true;
     }
 
-
-    public void withdraw(double amount) throws OverdraftException {
+    @Override
+    public boolean withdraw(double amount) throws OverdraftException {
         // get money form balance
-        if (amount <= checkingBalance) {
-            checkingBalance -= amount;
-        }else{
+        if (amount <= checkingAccountBalance) {
+            checkingAccountBalance -= amount;
+            return true;
+        } else {
             throw new OverdraftException("Insufficient funds. overdraft protection!");
         }
     }
-
-
 }

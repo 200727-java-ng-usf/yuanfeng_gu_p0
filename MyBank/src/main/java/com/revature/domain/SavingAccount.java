@@ -1,30 +1,24 @@
 package com.revature.domain;
 
-public class SavingAccount extends CheckingAccount{
-    private double interestRate;
-    private double savingBalance;
+import sun.misc.ClassFileTransformer;
 
-    public SavingAccount() {
+/**
+ * The saving account .
+ */
+
+public class SavingAccount extends CheckingAccount {
+
+
+    private double interest;
+
+    public SavingAccount(double savingAccountBalance, double interest) {
+        super();
+        this.savingAccountBalance = savingAccountBalance;
+        this.interest = interest;
     }
 
-    public SavingAccount(double interestRate, double savingBalance) {
-        this.interestRate = interestRate;
-        this.savingBalance = savingBalance;
+    public double getSavingAccountBalance() {
+        return savingAccountBalance;
     }
 
-    public double getInterestRate() {
-        return interestRate;
-    }
-
-    public void setInterestRate(double interestRate) {
-        this.interestRate = interestRate;
-    }
-
-    public double getSavingBalance() {
-        return savingBalance;
-    }
-
-    public void setSavingBalance(double savingBalance) {
-        this.savingBalance = savingBalance;
-    }
 }
