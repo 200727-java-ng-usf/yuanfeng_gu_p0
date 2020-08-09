@@ -4,7 +4,7 @@ For Project 0, you will be building a console-based banking application. Present
 
 # MyBank
 
-### Aug 07 update
+### Aug 07 update. version 0.1
 
 > Basic framework
 
