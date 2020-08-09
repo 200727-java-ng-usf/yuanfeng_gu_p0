@@ -4,7 +4,7 @@ For Project 0, you will be building a console-based banking application. Present
 
 # MyBank
 
-##### Aug 07 update
+### Aug 07 update
 
 > Basic framework
 
@@ -16,21 +16,21 @@ For Project 0, you will be building a console-based banking application. Present
 - CheckAccount
 
 
-#### Function list
 
-- [x]  create at least one account
-- [x] register a new user account with the system (must be secured with a password)
-- [x]  deposit funds into an account 
-- [x]  withdraw funds from an account (no overdrafting!)
-- [ ] login with my existing credentials
-- [ ] view the balance of my account(s) (all balance displays must be in currency format)
-- [ ] view the transaction history for an account
-- [ ] share a joint account with another user
-- [ ] transfer money between accounts
+### Aug 08 update. version 0.2
+
+###### 1.  Add  Class.MyBank to store all of the customers. 
+###### 2.  Change Class.Account to abstract class (May change to interface later).
+###### 3. Saving Account and Checking account both have their own value.
+###### 4. Override method deposit(), withdrew(),getBalance();
 
 
 
-[========]
+#### Need to do 
+
+- User interface, login and register function.
+- Store the customer info in arraylist or file ? add a counter in account to make joint account?
+- SQL ? PostGreSQL deployed on AWS RDS?  Mockito? (do some research next week)
 
 
 ### End
