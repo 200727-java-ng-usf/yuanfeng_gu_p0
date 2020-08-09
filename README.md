@@ -17,6 +17,9 @@ For Project 0, you will be building a console-based banking application. Present
 
 
 
+----------------------------------------------------------------------
+
+
 ### Aug 08 update. version 0.2
 
 ###### 1.  Add  Class.MyBank to store all of the customers. 
