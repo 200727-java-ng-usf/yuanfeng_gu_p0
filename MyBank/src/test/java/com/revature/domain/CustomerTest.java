@@ -15,7 +15,8 @@ public class CustomerTest {
 
     @Before
     public void setUp() throws Exception {
-        customer = new Customer("Eden","Gu"); // set Account name
+        customer = new Customer("effie","Gu","aaaa","bbbb");
+
 
     }
 
@@ -26,14 +27,9 @@ public class CustomerTest {
 
     @Test
     public void setAccount() {
+        customer.setAccount(new Account(0));
+        System.out.println(customer.getAccount().deposit(1000));
 
-        assertTrue(customer.getAccount().deposit(500)); // and deposit 500
-        try {
-            assertTrue(customer.getAccount().withdraw(1000));  // take 1000 off
-            System.out.println(customer.getAccount().getBalance()); // print result to check
-        } catch (OverdraftException e) {
-            e.printStackTrace();
-        }
 
     }
 }

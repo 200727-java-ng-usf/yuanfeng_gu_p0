@@ -8,15 +8,20 @@ package com.revature.domain;
 
 public class CheckingAccount extends Account {
     private double balance;
+    private Customer customer;
     protected double checkingAccountBalance;
     protected double savingAccountBalance;
 
-    public CheckingAccount(double checkingAccountBalance,double savingAccountBalance) {
+    public CheckingAccount() {
+    }
+
+    public CheckingAccount(double checkingAccountBalance, double savingAccountBalance) {
         this.checkingAccountBalance = checkingAccountBalance;
         this.savingAccountBalance = savingAccountBalance;
     }
 
-    public CheckingAccount() {
+    public CheckingAccount(Customer customer) {
+        this.customer =customer;
 
     }
 

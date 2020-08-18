@@ -15,12 +15,5 @@ public class MyBank {
     public MyBank() {
     }
 
-    public boolean addCustomer(String firstname,String lastname){    // add customer
-        try {
-            customers.add(new Customer(firstname,lastname));
-        }catch (NullPointerException e){
-            e.printStackTrace();
-        }
-        return true;
-    }
+
 }

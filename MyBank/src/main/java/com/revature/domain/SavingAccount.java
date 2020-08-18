@@ -13,6 +13,7 @@ public class SavingAccount extends CheckingAccount {
 
     public SavingAccount(double savingAccountBalance, double interest) {
         super();
+
         this.savingAccountBalance = savingAccountBalance;
         this.interest = interest;
     }
