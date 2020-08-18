@@ -2,23 +2,19 @@
 # Project 0
 For Project 0, you will be building a console-based banking application. Presentation date: August 26th, 2020
 
-# MyBank
 
 ### Aug 07 update. version 0.1
 
-> Basic framework
+### Basic framework
 
 ###  Domain List
 
-- Customer
-- Account
-- SavingAccount
-- CheckAccount
-
-
+###### Customer
+###### Account
+###### SavingAccount
+###### CheckAccount
 
 ----------------------------------------------------------------------
-
 
 ### Aug 08 update. version 0.2
 
@@ -28,12 +24,26 @@ For Project 0, you will be building a console-based banking application. Present
 ###### 4. Override method deposit(), withdrew(),getBalance();
 
 
-
 #### Need to do 
 
 - User interface, login and register function.
 - Store the customer info in arraylist or file ? add a counter in account to make joint account?
-- SQL ? PostGreSQL deployed on AWS RDS?  Mockito? (do some research next week)
-
+- SQL ? PostGreSQL deployed on AWS RDS? 
 
 ### End
+
+-------------------------------------------------------------------------
+
+### Aug 17 update. version 0.5
+
+###### 1.  Login and SignUp function completed  
+###### 2.  After Login authUser can check the Balance.
+###### 3.  Dash Board has been connected to the login and has passed the function test.
+
+#### Need to do 
+
+- Checking and saving Account functions
+- Joint Account and Roles
+- SQL ? PostGreSQL deployed on AWS RDS? 
+
+
