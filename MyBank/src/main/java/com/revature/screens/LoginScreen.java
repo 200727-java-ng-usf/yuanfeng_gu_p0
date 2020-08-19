@@ -36,8 +36,11 @@ public class LoginScreen extends Screen {
             System.out.println();
             System.out.print("Username: ");
             username = console.readLine();
+
             System.out.print("Password: ");
             password = console.readLine();
+            System.out.println();
+            System.out.println();
 
             authUser = customerService .authenticate(username,password);
             System.out.println("You entered Username : " + username + " Password: " + password);

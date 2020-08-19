@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class Customer {
 
-    private Integer accountNo;
+    private Integer id;
     private String firstName;
     private String lastName;
     private String username;
@@ -28,7 +28,7 @@ public class Customer {
     }
 
     public Customer(Integer accountNo, String firstName, String lastName, String username, String password) {
-        this.accountNo = accountNo;
+        this.id = accountNo;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -39,12 +39,12 @@ public class Customer {
         this(copy.firstName, copy.lastName, copy.username, copy.password);
     }
 
-    public Integer getAccountNo() {
-        return accountNo;
+    public Integer getId() {
+        return id;
     }
 
-    public void setAccountNo(Integer accountNo) {
-        this.accountNo = accountNo;
+    public void setId(Integer accountNo) {
+        this.id = accountNo;
     }
 
     public String getFirstName() {
@@ -100,7 +100,7 @@ public class Customer {
         if (this == o) return true;
         if (!(o instanceof Customer)) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(getAccountNo(), customer.getAccountNo()) &&
+        return Objects.equals(getId(), customer.getId()) &&
                 Objects.equals(getFirstName(), customer.getFirstName()) &&
                 Objects.equals(getLastName(), customer.getLastName()) &&
                 Objects.equals(getUsername(), customer.getUsername()) &&
@@ -111,13 +111,13 @@ public class Customer {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getAccountNo(), getFirstName(), getLastName(), getUsername(), getPassword(), getAccount(), getRole());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getUsername(), getPassword(), getAccount(), getRole());
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "accountNo=" + accountNo +
+                "Id =" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +

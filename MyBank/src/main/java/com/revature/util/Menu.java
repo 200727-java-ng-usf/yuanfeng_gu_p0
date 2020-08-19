@@ -14,10 +14,11 @@ public class Menu {
 
 
     public void mainMenu(){
-        this.printMainMenu();
+
         int option = 372819387;
 
         while (option!=3){
+            this.printMainMenu();
             System.out.println();
             System.out.println();
 
@@ -28,6 +29,8 @@ public class Menu {
 
             } catch (InputMismatchException e){
                 System.out.println("Please enter 1 , 2 or 3.");
+                System.out.println();
+                System.out.println();
             }
             switch (option) {
                 case 1: this.login();break;
@@ -66,5 +69,6 @@ public class Menu {
         Screen registerScreen = new RegisterScreen();
         registerScreen.render();
     }
+
 
 }

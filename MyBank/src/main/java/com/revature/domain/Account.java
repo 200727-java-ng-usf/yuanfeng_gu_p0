@@ -11,16 +11,19 @@ import java.util.Objects;
 
 public class Account {
 
+    static Integer accountNo = 100000;
     private double balance;
-    private Customer customer;
+    static Integer count = 1;
 
     public Account() {
         System.out.println("[log] Account instantiating");
-        customer = new Customer();
+        Customer customer = new Customer();
     }
 
     public Account(double balance) {
         this.balance = balance;
+        accountNo = accountNo + count;
+        count ++;
     }
 
     public double getBalance() {
@@ -29,6 +32,14 @@ public class Account {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public Integer getAccountNo() {
+        return accountNo;
+    }
+
+    public void setAccountNo(Integer accountNo) {
+        this.accountNo = accountNo;
     }
 
     public boolean deposit(double amount){
@@ -61,7 +72,7 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "balance=" + balance +
+                "balance=" + balance + "Account No= "+ accountNo+
                 '}';
     }
 }

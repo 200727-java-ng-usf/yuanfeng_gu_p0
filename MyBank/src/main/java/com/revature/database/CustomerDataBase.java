@@ -26,7 +26,7 @@ public class CustomerDataBase extends HashMap<Integer, Customer> {
 
         Customer nCustomer = new Customer(newCustomer);
 
-        nCustomer.setAccountNo(key);
+        nCustomer.setId(key);
 
         customerDataSet.put(key++,nCustomer);
 

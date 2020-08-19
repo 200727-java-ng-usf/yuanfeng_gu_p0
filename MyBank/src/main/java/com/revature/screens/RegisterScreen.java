@@ -41,7 +41,12 @@ public class RegisterScreen extends Screen{
             System.out.println(newRegisterUser);
 
 
-            System.out.println(" Your have New Account now !");
+            System.out.println(" New account successfully created !");
+
+            System.out.println("Please log in with your new username and password");
+
+            System.out.println();
+            System.out.println();
 
             new LoginScreen().render();
 
