@@ -15,6 +15,7 @@ public class LoginScreen extends Screen {
 
     private CustomerService customerService;
     private Customer authUser;
+    private Customer findUser;
 
     public LoginScreen() {
         System.out.println("[log] LoginScreen instantiating ");
@@ -44,16 +45,18 @@ public class LoginScreen extends Screen {
 
             authUser = customerService .authenticate(username,password);
             System.out.println("You entered Username : " + username + " Password: " + password);
+            System.out.println(authUser.getAccountNo());
+            System.out.println(authUser.getAccount());
 
             DashBoardScreen dashBoardScreen = new DashBoardScreen();
             dashBoardScreen.setAuthUser(authUser);
+
+
             dashBoardScreen.render();
 
 
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (AuthenticationException e) {
+        } catch (IOException | AuthenticationException e) {
             e.printStackTrace();
         } catch (InvalidRequestException e) {
             e.printStackTrace();

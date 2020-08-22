@@ -1,5 +1,7 @@
 package com.revature.domain;
 
+import com.revature.exceptions.OverdraftException;
+
 /**
  *  checking Account
  *

@@ -54,5 +54,28 @@ public class CustomerDataBase extends HashMap<Integer, Customer> {
     }
 
 
+    public Customer findUserByName(String firstname,String lastname){
 
-}
+        for(Customer user: customerDataSet.values()){
+            if(user.getFirstName().equals(firstname) && user.getPassword().equals(lastname)){
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public Customer findUserByAccountNo(Integer accountNo){
+        for (Customer user:customerDataSet.values()
+        ) {if(user.getAccount().getAccountNo().equals(accountNo)){
+            return  user;
+        }
+
+        }
+        return null;
+    }
+
+    }
+
+
+
+

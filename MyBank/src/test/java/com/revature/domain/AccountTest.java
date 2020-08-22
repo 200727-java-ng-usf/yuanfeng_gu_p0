@@ -1,5 +1,6 @@
 package com.revature.domain;
 
+import com.revature.exceptions.OverdraftException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

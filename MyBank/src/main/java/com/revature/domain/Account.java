@@ -1,5 +1,7 @@
 package com.revature.domain;
 
+import com.revature.exceptions.OverdraftException;
+
 import java.util.Objects;
 
 /**
@@ -11,7 +13,7 @@ import java.util.Objects;
 
 public class Account {
 
-    static Integer accountNo = 100000;
+    public String accountNo;
     private double balance;
     static Integer count = 1;
 
@@ -22,8 +24,6 @@ public class Account {
 
     public Account(double balance) {
         this.balance = balance;
-        accountNo = accountNo + count;
-        count ++;
     }
 
     public double getBalance() {
@@ -34,11 +34,11 @@ public class Account {
         this.balance = balance;
     }
 
-    public Integer getAccountNo() {
+    public String getAccountNo() {
         return accountNo;
     }
 
-    public void setAccountNo(Integer accountNo) {
+    public void setAccountNo(String accountNo) {
         this.accountNo = accountNo;
     }
 
@@ -47,13 +47,22 @@ public class Account {
         return true;
     }
 
-    public boolean withdraw(double amount) throws OverdraftException{
+    public boolean withdraw(double amount) throws OverdraftException {
         if (amount <= balance) {
             balance -= amount;
             return true;
         } else {
             throw new OverdraftException("Insufficient funds. overdraft protection!");
         }
+    }
+
+    public double transfer(double amount) throws OverdraftException {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            throw new OverdraftException("Insufficient funds. overdraft protection!");
+        }
+         return amount;
     }
 
     @Override

@@ -9,12 +9,22 @@ import java.util.Objects;
 
 public class Customer {
 
-    private Integer id;
+    static Integer id;
     private String firstName;
     private String lastName;
     private String username;
     private String password;
     private Account account;
+
+    public String getAccountNo() {
+        return accountNo;
+    }
+
+    public void setAccountNo(String accountNo) {
+        this.accountNo = accountNo;
+    }
+
+    private String accountNo;
     Role role;
 
     public Customer() {
@@ -25,6 +35,7 @@ public class Customer {
         this.lastName = lastName;
         this.username = username;
         this.password = password;
+        this.role= Role.BASIC;
     }
 
     public Customer(Integer accountNo, String firstName, String lastName, String username, String password) {
@@ -33,6 +44,7 @@ public class Customer {
         this.lastName = lastName;
         this.username = username;
         this.password = password;
+        this.role= Role.BASIC;
     }
 
     public Customer(Customer copy) {

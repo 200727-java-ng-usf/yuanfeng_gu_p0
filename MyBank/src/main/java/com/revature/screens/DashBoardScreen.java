@@ -1,7 +1,9 @@
 package com.revature.screens;
 
 import com.revature.domain.Customer;
-import com.revature.domain.OverdraftException;
+import com.revature.exceptions.OverdraftException;
+import com.revature.exceptions.InvalidRequestException;
+import com.revature.services.CustomerService;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -10,9 +12,11 @@ public class DashBoardScreen extends Screen {
 
     LoginScreen loginScreen;
     Customer authUser;
+    private CustomerService customerService;
 
     public DashBoardScreen() {
         loginScreen = new LoginScreen();
+        customerService = new CustomerService();
     }
 
     public void setAuthUser(Customer authUser) {
@@ -26,7 +30,7 @@ public class DashBoardScreen extends Screen {
         return authUser.getFirstName() + "." + authUser.getLastName();
     }
 
-    public Integer PrintAccNo(){return authUser.getAccount().getAccountNo();}
+    public String PrintAccNo(){return authUser.getAccount().getAccountNo();}
 
     public void deposit(){
         double amount = 0;
@@ -42,6 +46,7 @@ public class DashBoardScreen extends Screen {
         System.out.println();
         if(isSuccess) System.out.println("You successfully deposited "+amount+" USD");
         System.out.println(" New Account Balance : " + this.printAmount());
+        customerService.updateAccountInfo(authUser.getAccountNo(),this.printAmount());
 
     }
 
@@ -62,6 +67,59 @@ public class DashBoardScreen extends Screen {
         System.out.println();
         System.out.println();
         if(isSuccess) System.out.println("You successfully withdrawn "+amount+" USD");
+        System.out.println(" New Account Balance : " + this.printAmount());
+        customerService.updateAccountInfo(authUser.getAccountNo(),this.printAmount());
+
+    }
+
+    public void transfer(){
+        double amount = 0;
+        String firstname,lastname;
+        Integer accountNo;
+        Scanner sc = new Scanner(System.in);
+        System.out.println(" -------  Transfer --------");
+        System.out.println("please Enter the Recipient's name.");
+        System.out.print("Firstname:");
+        firstname = sc.nextLine();
+        System.out.print("LastName:");
+        lastname = sc.nextLine();
+        System.out.println();
+        System.out.print("please Enter the Account Number: ");
+        accountNo = sc.nextInt();
+        System.out.print("please Enter Amount: ");
+        amount = sc.nextDouble();
+
+
+        Customer receiver;
+        try {
+
+            receiver = customerService.transferTo(accountNo);
+            System.out.println("The recipient name you entered : " + firstname + "." + lastname);
+            System.out.println("The name of the recipient’s account record： " + receiver.getFirstName() + "." + receiver.getLastName());
+
+            System.out.println("Do you want to want to continue (Y/N)");
+            Scanner scanner = new Scanner(System.in);
+            String answer = scanner.nextLine();
+            if(!answer.equalsIgnoreCase("y")){
+                System.out.println("The transfer did not complete successfully");
+            }else{
+            if(authUser.getAccount().withdraw(amount)) {
+                receiver.getAccount().deposit(amount);
+
+                System.out.println("You successfully transfer "+amount+" USD to Account No: "
+                        + receiver.getAccount().getAccountNo()+"(" + receiver.getFirstName()+"."+receiver.getLastName()+")");
+                customerService.updateAccountInfo(authUser.getAccountNo(), authUser.getAccount().getBalance());
+                customerService.updateAccountInfo(receiver.getAccountNo(),receiver.getAccount().getBalance());
+
+            }else System.out.println("The transfer did not complete successfully");
+        }} catch (InvalidRequestException e) {
+            e.printStackTrace();
+        } catch (OverdraftException e) {
+            e.printStackTrace();
+        }
+        System.out.println();
+        System.out.println();
+
         System.out.println(" New Account Balance : " + this.printAmount());
 
     }
@@ -90,7 +148,8 @@ public class DashBoardScreen extends Screen {
         System.out.println();
         System.out.println("                 1) Deposit                       ");
         System.out.println("                 2) Withdrew                    ");
-        System.out.println("                 3) Go Back                        ");
+        System.out.println("                 3) Transfer                        ");
+        System.out.println("                 4) Go Back                       ");
         System.out.println();
         System.out.println("-----------------  END  ------------------------");
 
@@ -99,7 +158,7 @@ public class DashBoardScreen extends Screen {
     public void dashOptions(){
         int option = 372819387;
 
-        while (option!=3){
+        while (option!=4){
             this.printDashMenu();
             System.out.println();
             System.out.println();
@@ -119,7 +178,9 @@ public class DashBoardScreen extends Screen {
                 break;
                 case 2: this.withdraw();
                 break;
-                case 3:  System.out.println("Exit...");break;
+                case 3: this.transfer();
+                break;
+                case 4:  System.out.println("Exit...");break;
                 default:
                     System.out.println(" Try again please......");
 

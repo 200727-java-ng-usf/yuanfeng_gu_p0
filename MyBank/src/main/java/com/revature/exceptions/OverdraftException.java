@@ -1,4 +1,4 @@
-package com.revature.domain;
+package com.revature.exceptions;
 
 public class OverdraftException extends  Exception {
 
