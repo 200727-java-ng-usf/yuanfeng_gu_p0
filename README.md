@@ -42,8 +42,15 @@ For Project 0, you will be building a console-based banking application. Present
 
 #### Need to do 
 
-- Checking and saving Account functions
-- Joint Account and Roles
-- SQL ? PostGreSQL deployed on AWS RDS? 
 
 
+### Aug 22 update. version 1.0
+
+###### 1.  All function completed  
+###### 2.  All date linked to the AWS by using Postgresql 
+###### 3.  customer info able to create and update from database
+
+#### Need to do 
+- Testing 
+- Organize redundant codes 
+- optimize customer interface
