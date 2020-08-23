@@ -14,9 +14,14 @@ public class CustomerService {
     private CustomerRepo customerRepo;
 
     public CustomerService() {
-        System.out.println("[log] CustomerService instantiating ");
-        customerRepo = new CustomerRepo();
+
+        customerRepo = new CustomerRepo();  // connect to CustomerRepo.class
     }
+
+    /**
+     * To manipulate and testcthe Customer Data
+     *
+     */
 
     public Customer authenticate(String username,String password) throws AuthenticationException, InvalidRequestException {
 
@@ -55,6 +60,8 @@ public class CustomerService {
         success = customerRepo.addCustomer(newCustomer);            // add in customer table
         if (success)customerRepo.addCustomerAccount(newCustomer);   // add in account table
 
+        newCustomer.setRole(Role.BASIC);    // All new customer set to BASIC
+
 
         return success;
 
@@ -74,7 +81,22 @@ public class CustomerService {
 
     }
 
+    public Customer viewCustomerInfo(Customer customer) throws InvalidRequestException {
 
+        if(customer == null){
+            throw new InvalidRequestException("Invalid credential values provide ! ");
+        }else {
+            Customer targetUser = customerRepo.findUserByAccountNo(Integer.valueOf(customer.getAccountNo())).orElseThrow(AuthenticationException::new);
+            Account targetAccount = customerRepo.findAccountByAccountNo(Integer.valueOf(customer.getAccountNo())).orElseThrow(AuthenticationException::new);
+            targetUser.setAccount(targetAccount);
+
+
+            return targetUser;
+        }
+
+    }
+
+// checker
     public boolean isUserValid(Customer user){
         if(user == null)return  false;
         if(user.getFirstName() == null || user.getFirstName().trim().equals("")) return false;
@@ -85,10 +107,11 @@ public class CustomerService {
 
     }
 
+    // update the account info to the datebase
    public void updateAccountInfo(String accountNo,double balance){
         customerRepo.UpdateAccount(accountNo,balance);
+        }
    }
 
 
 
-}

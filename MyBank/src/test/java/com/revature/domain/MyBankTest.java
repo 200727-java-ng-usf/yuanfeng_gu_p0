@@ -11,7 +11,6 @@ import static org.junit.Assert.*;
 
 public class MyBankTest {
 
-    MyBank myBank;
 
     @Before
     public void setUp() throws Exception {

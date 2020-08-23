@@ -18,7 +18,7 @@ public class CustomerRepo {
 
  //   select  * from mybank.customer c
     public CustomerRepo() {
-        System.out.println("[log] . CustomerRepo Instantiating ");
+
     }
 
     public Optional<Customer> findUserByCredentials(String username, String password){
@@ -175,6 +175,10 @@ public class CustomerRepo {
 
 
 
+    /**
+     * Find Account from account table use by customer.account_no
+
+     */
 
 
     public Optional<Account> findAccountByAccountNo(Integer accountNo){
@@ -207,7 +211,6 @@ public class CustomerRepo {
         return _acc;
     }
 
-    public Optional<Customer> findUserByName(String firstname,String lastname){return Optional.of(null);}
 
     private Set<Customer> mapResultSet(ResultSet rs) throws SQLException {
 

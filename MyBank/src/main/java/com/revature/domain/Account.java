@@ -18,7 +18,7 @@ public class Account {
     static Integer count = 1;
 
     public Account() {
-        System.out.println("[log] Account instantiating");
+
         Customer customer = new Customer();
     }
 
@@ -80,8 +80,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" +
-                "balance=" + balance + "Account No= "+ accountNo+
-                '}';
+        return " ";
     }
 }

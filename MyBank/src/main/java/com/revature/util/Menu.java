@@ -27,7 +27,8 @@ public class Menu {
                 Scanner sc = new Scanner(System.in);
                 option = sc.nextInt();
                 switch (option) {
-                    case 1: this.login();break;
+                    case 1: this.login();
+                    break;
                     case 2: this.register();break;
                     case 3:  System.out.println("Exit...");break;
                     default:

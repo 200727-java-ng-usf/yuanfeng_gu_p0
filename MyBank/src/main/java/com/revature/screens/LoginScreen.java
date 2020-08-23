@@ -12,23 +12,28 @@ import java.io.InputStreamReader;
 import java.time.Year;
 
 public class LoginScreen extends Screen {
+    private static int counter=3;
 
     private CustomerService customerService;
     private Customer authUser;
-    private Customer findUser;
+
 
     public LoginScreen() {
-        System.out.println("[log] LoginScreen instantiating ");
-        customerService = new CustomerService();
+
+        customerService = new CustomerService();  //  CustomerService.class
     }
 
 
+    public int getCounter() {
+        return counter;
+    }
 
     @Override
     public void render() {
 
         BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
         String username,password;
+
 
 
 
@@ -44,12 +49,9 @@ public class LoginScreen extends Screen {
             System.out.println();
 
             authUser = customerService .authenticate(username,password);
-            System.out.println("You entered Username : " + username + " Password: " + password);
-            System.out.println(authUser.getAccountNo());
-            System.out.println(authUser.getAccount());
 
             DashBoardScreen dashBoardScreen = new DashBoardScreen();
-            dashBoardScreen.setAuthUser(authUser);
+            dashBoardScreen.setAuthUser(authUser);                           // pass authUser to dashBoardScreen.class
 
 
             dashBoardScreen.render();
@@ -57,9 +59,15 @@ public class LoginScreen extends Screen {
 
 
         } catch (IOException | AuthenticationException e) {
-            e.printStackTrace();
+            System.out.println("You entered the wrong information");
+            --counter;
+            System.out.println("Total 3 times try. You have "+counter+" more.");
+            if (counter==0){
+                System.out.println(" Force exit program....");
+                System.exit(1);
+            }
         } catch (InvalidRequestException e) {
-            e.printStackTrace();
+            System.out.println("Invalid  Request !");
         }
 
     }

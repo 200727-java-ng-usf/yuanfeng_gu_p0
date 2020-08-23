@@ -128,14 +128,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "Id =" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", account=" + account +
-                ", role=" + role +
-                '}';
+        return "  ";
     }
 }

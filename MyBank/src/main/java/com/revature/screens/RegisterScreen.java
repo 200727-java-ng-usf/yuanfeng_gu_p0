@@ -16,7 +16,7 @@ public class RegisterScreen extends Screen{
     private CustomerService customerService;
 
     public  RegisterScreen(){
-        System.out.println("[log] Instantiating RegisterScreen ");
+
         customerService = new CustomerService();
     }
 
@@ -39,9 +39,9 @@ public class RegisterScreen extends Screen{
 
             Customer newCustomer = new Customer(firstname,lastname,username,password);
             newCustomer.setAccountNo(AccountNoGenerate.newAccountNo());  // set new account Number for new user
-            newCustomer.setRole(Role.BASIC);
+            newCustomer.setRole(Role.BASIC); //set up account type
 
-            //newRegisterUser.setAccount(new Account(0));
+
             customerService.addAccount(newCustomer);
 
             System.out.println(" New account successfully created !");
@@ -57,7 +57,8 @@ public class RegisterScreen extends Screen{
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(" You entered the wrong information ");
+
         }
 
 
