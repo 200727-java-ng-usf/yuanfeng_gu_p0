@@ -40,10 +40,18 @@ For Project 0, you will be building a console-based banking application. Present
 ###### 2.  After Login authUser can check the Balance.
 ###### 3.  Dash Board has been connected to the login and has passed the function test.
 
+
+
+
+
+
+### Aug 22 update. version 1.0
+
+###### 1.  All function completed  
+###### 2.  All date linked to the AWS by using Postgresql 
+###### 3.  customer info able to create and update from database
+
 #### Need to do 
-
-- Checking and saving Account functions
-- Joint Account and Roles
-- SQL ? PostGreSQL deployed on AWS RDS? 
-
-
+- Testing 
+- Organize redundant codes 
+- optimize customer interface
