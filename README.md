@@ -44,6 +44,10 @@ For Project 0, you will be building a console-based banking application. Present
 
 
 
+----------------------------------------------------------------------------
+
+
+
 
 ### Aug 22 update. version 1.0
 
@@ -55,3 +59,14 @@ For Project 0, you will be building a console-based banking application. Present
 - Testing 
 - Organize redundant codes 
 - optimize customer interface
+
+
+
+-----------------------------------------------------------------------------
+
+### Aug 23 update. version 1.1
+
+######  all Completed, tested various user input and wrong data, unit test completed
+
+#### Need to do 
+- Prepare for presentation
