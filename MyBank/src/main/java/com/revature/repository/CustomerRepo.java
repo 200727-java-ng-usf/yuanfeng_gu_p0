@@ -14,9 +14,16 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.HashSet;
 
+
+/**
+ * To create the connection with database
+ * Job 1: read, write, change, update the data from AWS database by using postgresql
+ *     2: search by name, accountNo ... etc from customer table and account table
+ */
+
 public class CustomerRepo {
 
- //   select  * from mybank.customer c
+
     public CustomerRepo() {
 
     }

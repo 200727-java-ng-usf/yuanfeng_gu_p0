@@ -19,8 +19,9 @@ public class CustomerService {
     }
 
     /**
-     * To manipulate and testcthe Customer Data
-     *
+     * To manipulate and search Customer Data
+     * Job 1: Authentication
+     *     2: update , add, search Customer's data
      */
 
     public Customer authenticate(String username,String password) throws AuthenticationException, InvalidRequestException {
@@ -67,6 +68,7 @@ public class CustomerService {
 
     }
 
+    // Account function
     public Customer transferTo(Integer accountNo) throws InvalidRequestException {
         if(accountNo == null){
             throw new InvalidRequestException("Invalid credential values provide ! ");
@@ -81,6 +83,8 @@ public class CustomerService {
 
     }
 
+
+    // Account function
     public Customer viewCustomerInfo(Customer customer) throws InvalidRequestException {
 
         if(customer == null){

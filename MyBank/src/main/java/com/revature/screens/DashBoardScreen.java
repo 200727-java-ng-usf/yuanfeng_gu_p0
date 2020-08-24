@@ -9,6 +9,13 @@ import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
+/**
+ *  DashBoard Menu and Account Service
+ *  Job 1 : show the dashboard menu;
+ *      2 : give user options to pick;
+ *      3 : all of the account manipulations
+ */
+
 public class DashBoardScreen extends Screen {
 
     LoginScreen loginScreen;
@@ -40,7 +47,10 @@ public class DashBoardScreen extends Screen {
 
 
     /**
-     *  DashBoard functions
+     *  DashBoard function:Account Service
+     *  deposit , withdrew , transfer , and show UserInfo(updated info).
+     *
+     *
      */
 
     public void deposit(){
