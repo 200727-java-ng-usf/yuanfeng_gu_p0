@@ -147,7 +147,7 @@ public class DashBoardScreen extends Screen {
             System.out.println(" Signing Out ... ");
         }
 
-        if(accountNo >= 1000000 && accountNo<=1000999 && amount >0 ) {
+        if(accountNo >= 100000 && accountNo<=1000999 && amount >0 ) {
 
             try {
 

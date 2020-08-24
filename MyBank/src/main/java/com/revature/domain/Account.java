@@ -22,9 +22,15 @@ public class Account {
         Customer customer = new Customer();
     }
 
+    public Account(String accountNo, double balance) {
+        this.accountNo = accountNo;
+        this.balance = balance;
+    }
+
     public Account(double balance) {
         this.balance = balance;
     }
+
 
     public double getBalance() {
         return balance;
@@ -56,14 +62,7 @@ public class Account {
         }
     }
 
-    public double transfer(double amount) throws OverdraftException {
-        if (amount <= balance) {
-            balance -= amount;
-        } else {
-            throw new OverdraftException("Insufficient funds. overdraft protection!");
-        }
-         return amount;
-    }
+
 
     @Override
     public boolean equals(Object o) {

@@ -202,7 +202,7 @@ public class CustomerRepo {
                 acc.add(temp);
             }
 
-            return _acc = acc.stream().findFirst();
+            return acc.stream().findFirst();
 
         } catch (SQLException sqle) {
             sqle.printStackTrace();

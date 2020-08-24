@@ -38,8 +38,8 @@ public class Customer {
         this.role= Role.BASIC;
     }
 
-    public Customer(Integer accountNo, String firstName, String lastName, String username, String password) {
-        this.id = accountNo;
+    public Customer(String firstName) {
+       // this.id = accountNo;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
