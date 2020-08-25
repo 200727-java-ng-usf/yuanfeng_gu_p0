@@ -20,7 +20,11 @@ public class AccountRepo {
     public AccountRepo() {
     }
 
-    public void UpdateAccount(String accountNo,double balance) {
+    /**
+     *
+     * To update account info after user manipulate account
+     */
+    public void UpdateAccount(String accountNo,double balance) {       // input accountNo to make sure is the
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 

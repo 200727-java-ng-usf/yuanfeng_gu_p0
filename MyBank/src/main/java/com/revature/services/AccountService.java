@@ -4,12 +4,20 @@ import com.revature.domain.Customer;
 import com.revature.exceptions.InvalidRequestException;
 import com.revature.exceptions.OverdraftException;
 import com.revature.repository.AccountRepo;
-import com.revature.repository.CustomerRepo;
+
 
 import java.text.NumberFormat;
 import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
+
+
+/**
+ *   Account Service
+ *  Job 1 : update account info to database
+ *      2 : give user all the account function
+ *
+ */
 
 public class AccountService {
 
@@ -17,7 +25,7 @@ public class AccountService {
     private CustomerService customerService;
 
     private Customer authUser;
-    NumberFormat us   = NumberFormat.getCurrencyInstance(Locale.US);
+    NumberFormat us   = NumberFormat.getCurrencyInstance(Locale.US);   // print USD format
 
     public AccountService() {
         customerService = new CustomerService();
@@ -35,13 +43,15 @@ public class AccountService {
         System.out.println(" -------  Deposit --------");
         System.out.println();
         System.out.print("please Enter the amount: ");
+
+
         try {
             amount = sc.nextDouble();
         } catch (InputMismatchException e) {
             System.out.println("Please input a number ");
         }
 
-        boolean isSuccess = false;
+        boolean isSuccess = false;        // check is negative number
         if(amount>0) {
             isSuccess = authUser.getAccount().deposit(amount);
             System.out.println();
@@ -77,10 +87,10 @@ public class AccountService {
             System.out.println("Please input a number ");
         }
 
-        boolean isSuccess = false;
+        boolean isSuccess = false;     // check is negative number
         if(amount>0) {
             try {
-                isSuccess = authUser.getAccount().withdraw(amount);
+                isSuccess = authUser.getAccount().withdraw(amount);       // also Overdraft protection
             } catch (OverdraftException e) {
                 System.out.println("Your account balance is insufficient");
             }
@@ -133,27 +143,30 @@ public class AccountService {
             System.out.println(" Signing Out ... ");
         }
 
-        if(accountNo >= 100000 && accountNo<=1000999 && amount >0 ) {
+        if(accountNo >= 100000 && accountNo<=1000999 && amount >0 ) {    // limited user input range
 
             try {
 
-                receiver = customerService.transferTo(accountNo);
+                receiver = customerService.transferTo(accountNo);     // get receiver info  data type Customer
                 System.out.println("The recipient name you entered            : " + firstname + "." + lastname);
 
                 System.out.println("The name of the recipient’s account record： " + receiver.getFirstName() + "." + receiver.getLastName());
                 System.out.println();
-                System.out.println("Do you want to want to continue (Y/N)");
+                System.out.println("Do you want to want to continue (Y/N)");     // user option
                 Scanner scanner = new Scanner(System.in);
                 String answer = scanner.nextLine();
                 if (!answer.equalsIgnoreCase("y")) {
                     System.out.println("The transfer did not complete successfully");
                 } else {
-                    if (authUser.getAccount().withdraw(amount)) {
-                        receiver.getAccount().deposit(amount);
+                    if (authUser.getAccount().withdraw(amount)) {       // take money from user account
+                        receiver.getAccount().deposit(amount);             // receiver's account get money
 
                         System.out.println("You successfully transfer " + us.format(amount) + " to Account No: "
                                 + receiver.getAccount().getAccountNo() + "(" + receiver.getFirstName() + "." + receiver.getLastName() + ")");
+
+                        // update to data base  for both of them
                         updateAccountInfo(authUser.getAccountNo(), authUser.getAccount().getBalance());
+
                         updateAccountInfo(receiver.getAccountNo(), receiver.getAccount().getBalance());
 
                     } else System.out.println("The transfer did not complete successfully");
@@ -176,6 +189,8 @@ public class AccountService {
         }
 
     }
+
+    // update database !
 
     public void updateAccountInfo(String accountNo,double balance){
         accountRepo.UpdateAccount(accountNo,balance);
