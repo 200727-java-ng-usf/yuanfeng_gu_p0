@@ -3,6 +3,8 @@ package com.revature.screens;
 import com.revature.domain.Account;
 import com.revature.domain.Customer;
 import com.revature.domain.Role;
+import com.revature.repository.AccountRepo;
+import com.revature.services.AccountService;
 import com.revature.services.CustomerService;
 import com.revature.util.AccountNoGenerate;
 
@@ -14,10 +16,12 @@ import java.util.Optional;
 public class RegisterScreen extends Screen{
 
     private CustomerService customerService;
+    private AccountRepo accountRepo;
 
     public  RegisterScreen(){
 
         customerService = new CustomerService();
+        accountRepo = new AccountRepo();
     }
 
     @Override
@@ -38,6 +42,16 @@ public class RegisterScreen extends Screen{
             password = reader.readLine();
 
             Customer newCustomer = new Customer(firstname,lastname,username,password);
+
+            String newAccount = AccountNoGenerate.newAccountNo();
+
+            /**
+             * check account is the same account number in the database
+             */
+            boolean hasAcc = accountRepo.findAccountByAccountNo(Integer.valueOf(newAccount)).isPresent();
+            while(hasAcc){
+                newAccount = AccountNoGenerate.newAccountNo();
+            }
             newCustomer.setAccountNo(AccountNoGenerate.newAccountNo());  // set new account Number for new user
             newCustomer.setRole(Role.BASIC); //set up account type
 
