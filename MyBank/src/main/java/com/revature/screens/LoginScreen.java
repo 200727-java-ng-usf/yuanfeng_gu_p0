@@ -48,13 +48,13 @@ public class LoginScreen extends Screen {
             System.out.println();
             System.out.println();
 
-            authUser = customerService .authenticate(username,password);
+            authUser = customerService .authenticate(username,password);       // get authUser!
 
             DashBoardScreen dashBoardScreen = new DashBoardScreen();
             dashBoardScreen.setAuthUser(authUser);                           // pass authUser to dashBoardScreen.class
 
 
-            dashBoardScreen.render();
+            dashBoardScreen.render();                                       // go to the dash board
 
 
 
@@ -72,7 +72,4 @@ public class LoginScreen extends Screen {
 
     }
 
-    public Customer getAuthUser() {
-        return authUser;
-    }
 }

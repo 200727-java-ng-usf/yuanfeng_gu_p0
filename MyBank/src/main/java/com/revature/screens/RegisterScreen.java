@@ -56,7 +56,7 @@ public class RegisterScreen extends Screen{
             newCustomer.setRole(Role.BASIC); //set up account type
 
 
-            customerService.addAccount(newCustomer);
+            customerService.addAccount(newCustomer);     // pass the user
 
             System.out.println(" New account successfully created !");
 
