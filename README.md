@@ -70,3 +70,18 @@ For Project 0, you will be building a console-based banking application. Present
 
 #### Need to do 
 - Prepare for presentation
+
+
+
+### Aug 25 update. version 1.2
+
+###### 1.  Separate account and customer service
+###### 2.  Separate account and customer Repository 
+###### 3.  check dulicate account No when create new account 
+###### 4.  Unit test for new classes 
+###### 5.  Tested all functions from user input 
+
+
+#### Need to do 
+- Prepare for presentation
+
