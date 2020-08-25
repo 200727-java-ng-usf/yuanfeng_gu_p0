@@ -8,6 +8,8 @@ import com.revature.exceptions.InvalidRequestException;
 import com.revature.services.AccountService;
 import com.revature.services.CustomerService;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
@@ -26,6 +28,10 @@ public class DashBoardScreen extends Screen {
     private CustomerService customerService;
     private AccountService accountService;
     NumberFormat us   = NumberFormat.getCurrencyInstance(Locale.US);
+
+    SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+    Date date = new Date(System.currentTimeMillis());
+
 
     public DashBoardScreen() {
         loginScreen = new LoginScreen();
@@ -71,6 +77,7 @@ public class DashBoardScreen extends Screen {
             System.out.println("   Account NO:      " + customerInfo.getAccountNo());
             System.out.println("   Account Balance: " + us.format(customerInfo.getAccount().getBalance()));
             System.out.println();
+            System.out.println("   Current Date and Time: "+formatter.format(date));
             System.out.println(" --------------------------------------------------");
 
 
@@ -95,7 +102,10 @@ public class DashBoardScreen extends Screen {
         System.out.println();
         System.out.println("   Welcome ! "+ this.printName());
         System.out.println("   Account No: " + this.PrintAccNo());
-        System.out.println("   You total balance : " + us.format(this.printAmount()));
+        System.out.println("   You total balance: " + us.format(this.printAmount()));
+        System.out.println();
+        System.out.println("   Current Date and Time: "+formatter.format(date));
+        System.out.println(" --------------------------------------------------");
         dashOptions();
 
 
