@@ -41,7 +41,7 @@ public class AccountRepoTest {
     @Test
     public void findAccountByAccountNo() {
 
-                assertTrue(accountRepo.findAccountByAccountNo(1000697).isPresent());
+                assertTrue(accountRepo.findAccountByAccountNo(100001).isPresent());
            assertEquals("100005",accountRepo.findAccountByAccountNo(100005).get().getAccountNo());
 
             }

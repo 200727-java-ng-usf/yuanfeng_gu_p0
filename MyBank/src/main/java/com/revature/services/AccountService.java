@@ -158,7 +158,7 @@ public class AccountService {
                 if (!answer.equalsIgnoreCase("y")) {
                     System.out.println("The transfer did not complete successfully");
                 } else {
-                    if (authUser.getAccount().withdraw(amount)) {       // take money from user account
+                        authUser.getAccount().withdraw(amount);      // take money from user account
                         receiver.getAccount().deposit(amount);             // receiver's account get money
 
                         System.out.println("You successfully transfer " + us.format(amount) + " to Account No: "
@@ -169,8 +169,8 @@ public class AccountService {
 
                         updateAccountInfo(receiver.getAccountNo(), receiver.getAccount().getBalance());
 
-                    } else System.out.println("The transfer did not complete successfully");
-                }
+                    }
+
             } catch (InvalidRequestException e) {
                 System.out.println("You entered the wrong information");
                 System.out.println("The transfer did not complete successfully");

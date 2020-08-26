@@ -41,9 +41,9 @@ public class CustomerTest {
 
     @Test
     public void setAccount() {
-        customer.setAccount(new Account(0));
-        assertNotNull(customer.getAccount().deposit(1000));
-        assertTrue(customer.getAccount().deposit(1000));
+        mockCustomer.setAccount(new Account(0));
+        assertNotNull(mockCustomer.getAccount().deposit(1000));
+        assertTrue(mockCustomer.getAccount().deposit(1000));
     }
 
     @Test
